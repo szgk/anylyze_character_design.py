@@ -1,10 +1,11 @@
 ## About
+
 Get main colors from image data.
 
 ## How to use
 
 ```python
-python exex ./analyze_image.py
+python ./src/get_main_colors.py
 ```
 
 ↓

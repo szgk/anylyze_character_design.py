@@ -1,29 +1,25 @@
-from pathlib import Path 
-import PIL
 from PIL import Image
 import cv2
 import sklearn
 from sklearn.cluster import KMeans
 import numpy as np
+from pathlib import Path
+from utils import path
 
-def exec():
-    image_paths = get_file_paths_in_dir('./images')
+def get_images_in_dir(dir):
+    image_paths = path.get_file_paths_in_dir(dir)
+    images = []
     for image_path in image_paths:
-        main_color_images = get_main_color_arr(image_path)
-        concat_image = get_concat_image(main_color_images)
-        p_file = Path(image_path)
-        concat_image.save('./main_colors/'+p_file.name)
+        image = cv2.imread(image_path)
+        images.append(image)
+    
+    return images
 
-def get_main_color_arr(path, num = 5):
-    cv2_img = cv2.imread(path)
-    cv2_img = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2RGB)
+def get_main_colors_from_cv2img(cv2img, num = 5):
+    cv2_img = cv2.cvtColor(cv2img, cv2.COLOR_BGR2RGB)
 
     cv2_img = cv2_img.reshape(
         (cv2_img.shape[0] * cv2_img.shape[1], 3))
-
-    cv2_img.shape
-
-    print(cv2_img.shape)
 
     cluster = KMeans(n_clusters=num)
 
@@ -38,19 +34,23 @@ def get_main_color_arr(path, num = 5):
     cluster_centers_arr = cluster.cluster_centers_.astype(
         int, copy=False)
 
-    print(cluster_centers_arr.shape)
-
-    i = 0
     image_arr = []
     for rgb_arr in cluster_centers_arr:
         color_hex_str = '#%02x%02x%02x' % tuple(rgb_arr)
-        print(color_hex_str)
         color_img = Image.new(
             mode='RGB', size=(32, 32), color=color_hex_str)
-        print(color_img)
         image_arr.append(color_img)
 
     return image_arr
+
+def get_main_colors_by_path(path, num = 5):
+    cv2_img = cv2.imread(path)
+    return get_main_colors_from_cv2img(cv2_img, num)
+
+def get_main_colors_by_image(image, num = 5):
+    cv2_img = np.array(image.convert('RGB'))
+    return get_main_colors_from_cv2img(cv2_img, num)
+
 
 def get_concat_image(images):
     image_width = 0
@@ -70,13 +70,5 @@ def get_concat_image(images):
     for i, im in enumerate(images):
         concat_image.paste(im, (current_width, 0))
         current_width += im.width
-            
 
     return concat_image
-
-def get_file_paths_in_dir(path, ex = "jpg"):
-    input_dir = path
-    input_list = list(Path(input_dir).glob('**/*.'+ex))
-    return input_list
-
-exec()
