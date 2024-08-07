@@ -1,6 +1,7 @@
 .history
-learn_image
-output
+analyze_image
+output/*
+input/*
 !output/images/sample.jpg
 main_colors
 !output/main_colors/sample.jpg

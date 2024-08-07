@@ -1,8 +1,4 @@
-from utils import path
-from pathlib import Path
 from PIL import Image
-from sklearn.cluster import KMeans
-import numpy as np
 from utils import image
 import cv2
 
