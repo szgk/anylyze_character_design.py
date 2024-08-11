@@ -1,6 +1,6 @@
 ## About
 
-Get main colors from image data.
+program for analyze image.
 
 ## initialize
 
@@ -71,7 +71,7 @@ python ./src/get_main_colors_pie_chart.py input_directory_path output_file_path 
 ### get_color_rate_pi_chart
 
 ```python
-python ./src/get_color_rate_pi_chart.py input_path output_path png
+python ./src/get_color_rate_pi_chart.py input_directory_path output_directory_path exe
 ```
 
 ![](https://github.com/szgk/anylyze_image.py/blob/main/images/color_rate_pi_chart.png)
