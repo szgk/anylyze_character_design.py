@@ -1,10 +1,14 @@
-from utils import path
 from pathlib import Path
 from rembg import remove
 import cv2
 
+from utils import path
+from utils import commindline
+
 def remove_background():
-    image_paths = path.get_file_paths_in_dir('./input/background_images', 'png')
+    [input_path, output_path] = commindline.get_args()
+
+    image_paths = path.get_file_paths_in_dir(input_path, 'png')
 
     for image_path in image_paths:
         print(image_path)
@@ -18,6 +22,6 @@ def remove_background():
         )
 
         p_file = Path(image_path)
-        cv2.imwrite('./output/remove_background_images/'+p_file.name, remove_background_image)
+        cv2.imwrite(output_path+p_file.name, remove_background_image)
 
 remove_background()

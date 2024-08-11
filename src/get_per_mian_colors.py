@@ -4,15 +4,14 @@ from pathlib import Path
 from utils import image
 from utils import commindline
 
-def get_main_colors():
+def get_per_mian_colors():
     [input_path, output_path] = commindline.get_args()
 
-    image_paths = path.get_file_paths_in_dir(input_path)
-
+    image_paths = path.get_file_paths_in_dir(input_path, 'png')
     for image_path in image_paths:
         main_color_images = image.get_main_colors_by_path(image_path)
-        concat_image = image.get_concat_image(main_color_images)
         p_file = Path(image_path)
-        concat_image.save(output_path+p_file.name)
+        for i, _image in enumerate(main_color_images):
+            _image.save(output_path+p_file.stem+'_'+str(i)+p_file.suffix)
 
-get_main_colors()
+get_per_mian_colors()

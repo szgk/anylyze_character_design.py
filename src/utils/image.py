@@ -15,7 +15,7 @@ def get_images_in_dir(dir):
     
     return images
 
-def get_main_colors_from_cv2img(cv2img, num = 5):
+def get_cluster_centers_arr(cv2img, num = 5):
     cv2_img = cv2.cvtColor(cv2img, cv2.COLOR_BGR2RGB)
 
     cv2_img = cv2_img.reshape(
@@ -33,6 +33,11 @@ def get_main_colors_from_cv2img(cv2img, num = 5):
 
     cluster_centers_arr = cluster.cluster_centers_.astype(
         int, copy=False)
+    
+    return cluster_centers_arr
+
+def get_main_colors_from_cv2img(cv2img, num = 5):
+    cluster_centers_arr = get_cluster_centers_arr(cv2img, num)
 
     image_arr = []
     for rgb_arr in cluster_centers_arr:
@@ -43,9 +48,23 @@ def get_main_colors_from_cv2img(cv2img, num = 5):
 
     return image_arr
 
+def get_main_color_names_from_cv2img(cv2img, num = 5):
+    cluster_centers_arr = get_cluster_centers_arr(cv2img, num)
+
+    name_arr = []
+    for rgb_arr in cluster_centers_arr:
+        color_hex_str = '#%02x%02x%02x' % tuple(rgb_arr)
+        name_arr.append(color_hex_str)
+
+    return name_arr
+
 def get_main_colors_by_path(path, num = 5):
     cv2_img = cv2.imread(path)
-    return get_main_colors_from_cv2img(cv2_img, num)
+    return get_main_color_names_from_cv2img(cv2_img, num)
+
+def get_main_color_names_by_path(path, num = 5):
+    cv2_img = cv2.imread(path)
+    return get_main_color_names_from_cv2img(cv2_img, num)
 
 def get_main_colors_by_image(image, num = 5):
     cv2_img = np.array(image.convert('RGB'))
