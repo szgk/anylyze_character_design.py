@@ -33,7 +33,7 @@ python ./src/get_per_mian_colors.py input_directory_path output_directory_path
 ### Remove background
 
 ```python
-python ./src/remove_background.py input_directory_path output_directory_path
+python ./src/remove_background.py input_directory_path output_directory_path exe
 ```
 
 ![](https://github.com/szgk/anylyze_image.py/blob/main/images/remove_background.png)

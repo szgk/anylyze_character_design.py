@@ -6,9 +6,9 @@ from utils import path
 from utils import commindline
 
 def remove_background():
-    [input_path, output_path] = commindline.get_args()
+    [input_path, output_path, exe] = commindline.get_args()
 
-    image_paths = path.get_file_paths_in_dir(input_path, 'png')
+    image_paths = path.get_file_paths_in_dir(input_path, exe)
 
     for image_path in image_paths:
         background_image = cv2.imread(image_path)
