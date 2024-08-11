@@ -4,37 +4,36 @@ from decimal import Decimal, ROUND_HALF_UP
 
 class COLOR_NAMES(Enum):
     R = 'Red'
-    # RO = 'Red Orange'
     O = 'Orange'
-    # YO = 'Yellow Orange'
     Y = 'Yellow'
     YG = 'Yellow Green'
     G = 'Green'
     BG = 'Blue Green'
+    LB = 'Light Blue'
     B = 'Blue'
     DB = 'Dark Blue'
-    DeB = 'Deep Blue'
     BV = 'Blue Violet'
     V = 'Violet'
-    RV = 'Red Violet'
+    VR = 'Violet Red'
     GREY = 'Grey'
+    BLACK = 'Black'
+    WHITE = 'White'
 class COLOR_CODES(Enum):
     R = '#ff0000'
-    # RO = 'Red Orange'
-    O = '#ffbf00'
-    # YO = 'Yellow Orange'
-    Y = '#bfff00'
-    YG = '#3fff00'
-    G = '#00ff3f'
-    BG = '#00ffbf'
-    B = '#00bfff'
-    DB = '#003fff'
-    DeB = '#3f00ff'
-    BV = '#bf00ff'
-    V = '#ff00bf'
-    RV = '#ff003f'
+    O = '#ff7f00'
+    Y = '#ffff00'
+    YG = '#7fff00'
+    G = '#00ff00'
+    BG = '#00ff7f'
+    LB = '#00ffff'
+    B = '#007fff'
+    DB = '#0000ff'
+    BV = '#7f00ff'
+    V = '#ff00ff'
+    VR = '#ff007f'
     GREY = '#888888'
-
+    BLACK = '#000000'
+    WHITE = '#ffffff'
 
 def get_dict_for_pie_chart():
   return {'values': [], 'labels': [], 'colors': []}
@@ -70,40 +69,58 @@ def get_RGB_from_color_code(color_code):
 
 
 def get_color_name_from_RGB(rgb):
-    [r, g, b] = rgb
-
-    if(r + g + b == r*3):
+    if(is_black_RGB(rgb, 0.3)):
+        return COLOR_NAMES.BLACK
+    if(is_white_RGB(rgb, 0.95)):
+        return COLOR_NAMES.WHITE
+    if(is_grey_RGB(rgb, 7)):
         return COLOR_NAMES.GREY
 
     hue = get_hue_from_RGB(rgb)
+    color_name = get_name_from_hue(hue)
 
-    return get_name_from_hue(hue)
+    return color_name
 
 def get_name_from_hue(hue):
-    if 0 <= hue <= 30:
+    if 0 <= hue <= 15:
         return COLOR_NAMES.R
-    elif 30 < hue <= 60:
+    elif 15 < hue <= 45:
         return COLOR_NAMES.O
-    elif 60 < hue <= 90:
+    elif 45 < hue <= 75:
         return COLOR_NAMES.Y
-    elif 90 < hue <= 120:
+    elif 75 < hue <= 105:
         return COLOR_NAMES.YG
-    elif 120 < hue <= 150:
+    elif 105 < hue <= 135:
         return COLOR_NAMES.G
-    elif 150 < hue <= 180:
+    elif 135 < hue <= 165:
         return COLOR_NAMES.BG
-    elif 180 <= hue <= 210:
+    elif 165 < hue <= 195:
+        return COLOR_NAMES.LB
+    elif 195 < hue <= 225:
         return COLOR_NAMES.B
-    elif 210 < hue <= 240:
+    elif 225 < hue <= 255:
         return COLOR_NAMES.DB
-    elif 240 < hue <= 270:
-        return COLOR_NAMES.DeB
-    elif 270 < hue <= 300:
+    elif 255 < hue <= 285:
         return COLOR_NAMES.BV
-    elif 300 < hue <= 330:
+    elif 285 < hue <= 315:
         return COLOR_NAMES.V
-    elif 330 < hue <= 360:
-        return COLOR_NAMES.RV
+    elif 315 < hue <= 345:
+        return COLOR_NAMES.VR
+    elif 345 < hue <= 360:
+        return COLOR_NAMES.R
+    
+def get_saturation_from_RGB(rgb):
+    mx = max(rgb)
+    mn = min(rgb)
+    saturation = (mx - mn) / mx
+
+    return saturation
+    
+def get_brightness_from_RGB(rgb):
+    mx = max(rgb)
+    brightness = mx / 255
+
+    return brightness
 
 def is_similer_RGB(rgb1, rgb2, rng=10):
     [r1, g1, b1] = rgb1
@@ -111,11 +128,23 @@ def is_similer_RGB(rgb1, rgb2, rng=10):
 
     return in_range(r1, r2, rng) and in_range(g1, g2, rng) and in_range(b1, b2, rng)
 
-def is_grey_RGB(self, rgb, rng=10):
+def is_grey_RGB(rgb, rng=10):
     [r, g, b] = rgb
     avarage = sum(rgb) / len(rgb)
 
     return in_range(avarage, r, rng) and in_range(avarage, g, rng) and in_range(avarage, b, rng)
+
+def is_vivid_RGB(rgb, rng=0.7):
+   saturation = get_saturation_from_RGB(rgb)
+   return saturation >= rng
+
+def is_black_RGB(rgb, rng=0.2):
+   brightness = get_brightness_from_RGB(rgb)
+   return brightness <= rng
+
+def is_white_RGB(rgb, rng=0.8):
+   brightness = get_brightness_from_RGB(rgb)
+   return brightness >= rng
 
 def in_range(num1, num2, rng):
     num1Exist = not num1 and not (num1 == 0)
@@ -170,52 +199,24 @@ def get_color_code_from_rgb(rgb):
     [r, g, b] = rgb
     return '#%02x%02x%02x' % (r, g, b)
 
-def get_RGB_from_hue(hue):
-    """
-    get RGB params(ex. [255,255,255]) from hue degree.
-    """
-    mx = 255
-    r, g, b = 0, 0, 0
-
-    if hue is None or hue < 0:
-      raise TypeError('invalid value')
-
-    if 0 <= hue <= 60:
-      r = mx
-      g = math.floor(hue / 60 * mx)
-    elif 60 < hue <= 120:
-      r = math.floor((120 - hue) / 60 * mx)
-      g = mx
-    elif 120 < hue <= 180:
-      g = mx
-      b = math.floor((hue - 120) / 60 * mx)
-    elif 180 < hue <= 240:
-      g = math.floor((240 - hue) / 60 * mx)
-      b = mx
-    elif 240 < hue <= 300:
-      r = math.floor((hue - 240) / 60 * mx)
-      b = mx
-    elif 300 < hue <= 360:
-      r = mx
-      b = math.floor((360 - hue) / 60 * mx)
-
-    [r, g, b] = map(lambda n: n if 0 <= n <= 255 else 0, [r, g, b])
-
-    return [r, g, b]
-
 def color_name_dict_to_chart_data(color_name_dict):
-    print(color_name_dict)
     color_name_data = get_dict_for_pie_chart()
 
     for key, value in color_name_dict.items():
 
       color_name_data['labels'].append(key)
       color_name_data['values'].append(len(value))
+      color_name_data['colors'].append(get_color_code_by_color_name(key))
+    
+    return color_name_data
 
-      if len(value) > 0:
-        color_name_data['colors'].append(get_color_code_average(value))
-      else:
-         color_name_data['colors'].append(get_color_code_by_color_name(key))
+def main_color_dict_chart_data(color_name_dict):
+    color_name_data = get_dict_for_pie_chart()
+
+    for key, value in color_name_dict.items():
+      all_1_arr = [1 for i in range(len(value))]
+      color_name_data['values'].extend(all_1_arr)
+      color_name_data['colors'].extend(value)
     
     return color_name_data
 
@@ -239,22 +240,21 @@ def get_hex_average(hex_arr):
   total_oct = 0
   for _hex in hex_arr:
       total_oct += int(_hex, 16)
-
   average_oct = math.floor(total_oct / len(hex_arr))
 
   return hex(average_oct)
 
 
 def get_base_color_code():
-    print(get_color_code_from_rgb(get_RGB_from_hue(15)))
-    print(get_color_code_from_rgb(get_RGB_from_hue(45)))
-    print(get_color_code_from_rgb(get_RGB_from_hue(75)))
-    print(get_color_code_from_rgb(get_RGB_from_hue(105)))
-    print(get_color_code_from_rgb(get_RGB_from_hue(135)))
-    print(get_color_code_from_rgb(get_RGB_from_hue(165)))
-    print(get_color_code_from_rgb(get_RGB_from_hue(195)))
-    print(get_color_code_from_rgb(get_RGB_from_hue(225)))
-    print(get_color_code_from_rgb(get_RGB_from_hue(255)))
-    print(get_color_code_from_rgb(get_RGB_from_hue(285)))
-    print(get_color_code_from_rgb(get_RGB_from_hue(315)))
-    print(get_color_code_from_rgb(get_RGB_from_hue(345)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(0)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(30)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(60)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(90)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(120)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(150)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(180)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(210)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(240)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(270)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(300)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(330)))

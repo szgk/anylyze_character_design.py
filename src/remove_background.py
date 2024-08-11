@@ -11,7 +11,6 @@ def remove_background():
     image_paths = path.get_file_paths_in_dir(input_path, 'png')
 
     for image_path in image_paths:
-        print(image_path)
         background_image = cv2.imread(image_path)
         remove_background_image = remove(
             background_image,

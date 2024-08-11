@@ -22,8 +22,6 @@ def get_main_color_codes():
 
         main_color_dict[p_file.stem] = colors_arr
 
-    print(main_color_dict)
-
     with open(output_path, 'w') as fp:
         json.dump(main_color_dict, fp)
         

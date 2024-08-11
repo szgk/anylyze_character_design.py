@@ -44,7 +44,7 @@ python ./src/remove_background.py input_directory_path output_directory_path
 python ./src/get_kmeans_colors.py input_directory_path output_directory_path kmeans_num
 ```
 
-### ge_main_color_codes
+### get_main_color_codes
 
 ```python
 python ./src/get_main_color_codes.py input_directory_path output_json_path
@@ -52,10 +52,18 @@ python ./src/get_main_color_codes.py input_directory_path output_json_path
 
 ![](https://github.com/szgk/anylyze_image.py/blob/main/images/mian_color_codes.png)
 
-### ge_main_color_names
+### get_main_color_names
 
 ```python
 python ./src/ge_main_color_names.py input_directory_path output_json_path exe
 ```
 
 ![](https://github.com/szgk/anylyze_image.py/blob/main/images/main_color_names.png)
+
+### create_main_colors_pie_chart
+
+```python
+python ./src/create_main_colors_pie_chart.py output_directory_path exe
+```
+
+![](https://github.com/szgk/anylyze_image.py/blob/main/images/main_colors_pie_chart.png)

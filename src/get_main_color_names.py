@@ -9,8 +9,6 @@ def get_main_color_names():
 
     image_paths = path.get_file_paths_in_dir(input_path, exe)
 
-    print(image_paths)
-
     color_name_dict = data.get_main_color_name_dict_by_path(image_paths)
 
     with open(output_path, 'w') as fp:

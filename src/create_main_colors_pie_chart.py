@@ -12,10 +12,9 @@ def create_main_colors_pie_chart():
 
     main_color_name_dict = data.get_main_color_name_dict_by_path(input_path, exe)
 
-    chart_data = color.color_name_dict_to_chart_data(main_color_name_dict)
+    chart_data1 = color.color_name_dict_to_chart_data(main_color_name_dict)
+    chart_data2 = color.main_color_dict_chart_data(main_color_name_dict)
 
-    print(chart_data)
-
-    chart.create_pie_chart(chart_data)
+    chart.create_double_pie_chart(chart_data1, chart_data2)
 
 create_main_colors_pie_chart()
