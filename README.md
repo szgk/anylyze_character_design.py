@@ -20,7 +20,7 @@ python -m venv ./analyze_image
 python ./src/get_main_colors.py input_directory_path output_directory_path
 ```
 
-![](https://github.com/szgk/get_main_color/blob/main/images/mian_color.png)
+![](https://github.com/szgk/anylyze_image.py/blob/main/images/main_color.png)
 
 ### Get per main colors
 
@@ -28,7 +28,7 @@ python ./src/get_main_colors.py input_directory_path output_directory_path
 python ./src/get_per_mian_colors.py input_directory_path output_directory_path
 ```
 
-![](https://github.com/szgk/get_main_color/blob/main/images/per_mian_colors.png)
+![](https://github.com/szgk/anylyze_image.py/blob/main/images/per_main_colors.png)
 
 ### Remove background
 
