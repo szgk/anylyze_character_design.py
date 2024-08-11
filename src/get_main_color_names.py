@@ -15,7 +15,7 @@ def get_color_names():
 
     # create color name dict
     for element in color.COLOR_NAMES:
-        color_name_dict[str(element)] = []
+        color_name_dict[str(element.value)] = []
 
     for image_path in image_paths:
         main_color_codes = image.get_main_color_names_by_path(image_path)
@@ -23,7 +23,7 @@ def get_color_names():
         for color_code in main_color_codes:
             rgb = color.get_RGB_from_color_code(color_code)
             color_name = color.get_color_name_from_RGB(rgb)
-            color_name_dict[str(color_name)].append(color_code)
+            color_name_dict[str(color_name.value)].append(color_code)
 
 
     print(color_name_dict)

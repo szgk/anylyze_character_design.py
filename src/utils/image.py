@@ -60,7 +60,7 @@ def get_main_color_names_from_cv2img(cv2img, num = 5):
 
 def get_main_colors_by_path(path, num = 5):
     cv2_img = cv2.imread(path)
-    return get_main_color_names_from_cv2img(cv2_img, num)
+    return get_main_colors_from_cv2img(cv2_img, num)
 
 def get_main_color_names_by_path(path, num = 5):
     cv2_img = cv2.imread(path)

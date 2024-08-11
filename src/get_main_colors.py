@@ -5,9 +5,9 @@ from utils import image
 from utils import commindline
 
 def get_main_colors():
-    [input_path, output_path] = commindline.get_args()
+    [input_path, output_path, exe] = commindline.get_args()
 
-    image_paths = path.get_file_paths_in_dir(input_path)
+    image_paths = path.get_file_paths_in_dir(input_path, exe)
 
     for image_path in image_paths:
         main_color_images = image.get_main_colors_by_path(image_path)
