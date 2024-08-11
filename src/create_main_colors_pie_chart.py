@@ -5,21 +5,17 @@ import json
 from utils import color
 from utils import commindline
 from utils import chart
+from utils import data
 
 def create_main_colors_pie_chart():
-    [input_path] = commindline.get_args()
+    [input_path, exe] = commindline.get_args()
 
-    data_json = {}
+    main_color_name_dict = data.get_main_color_name_dict_by_path(input_path, exe)
 
-    with open(input_path) as f:
-        data_json = json.load(f)
-
-    chart_data = color.color_name_dict_to_chart_data(data_json)
+    chart_data = color.color_name_dict_to_chart_data(main_color_name_dict)
 
     print(chart_data)
 
-    # data = {'values': [1,2,3], 'labels': ['a', 'i', 'u'], 'colors': ['#ffaa00', '#0099dd', '#0000ff']}
-
-    # chart.create_pie_chart(data)
+    chart.create_pie_chart(chart_data)
 
 create_main_colors_pie_chart()

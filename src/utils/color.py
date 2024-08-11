@@ -220,7 +220,8 @@ def color_name_dict_to_chart_data(color_name_dict):
     return color_name_data
 
 def get_color_code_by_color_name(name):
-    value = ''
+    value = '#000000'
+
     for element in COLOR_NAMES:
       if(name == element.value): value = COLOR_CODES[element.name].value
 
@@ -229,10 +230,8 @@ def get_color_code_by_color_name(name):
 
 def get_color_code_average(color_code_arr):
   hex_arr = [code.replace('#', '') for code in color_code_arr]
-
   hex_average = get_hex_average(hex_arr)
-  color_code = '#' + hex_average.replace('0x', '')
-  print(color_code)
+  color_code = '#' + hex_average.replace('0x', '').zfill(6)
 
   return color_code
 
