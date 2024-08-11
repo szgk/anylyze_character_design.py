@@ -4,9 +4,9 @@ from decimal import Decimal, ROUND_HALF_UP
 
 class COLOR_NAMES(Enum):
     R = 'Red'
-    RO = 'Red Orange'
+    # RO = 'Red Orange'
     O = 'Orange'
-    YO = 'Yellow Orange'
+    # YO = 'Yellow Orange'
     Y = 'Yellow'
     YG = 'Yellow Green'
     G = 'Green'
@@ -18,6 +18,26 @@ class COLOR_NAMES(Enum):
     V = 'Violet'
     RV = 'Red Violet'
     GREY = 'Grey'
+class COLOR_CODES(Enum):
+    R = '#ff0000'
+    # RO = 'Red Orange'
+    O = '#ffbf00'
+    # YO = 'Yellow Orange'
+    Y = '#bfff00'
+    YG = '#3fff00'
+    G = '#00ff3f'
+    BG = '#00ffbf'
+    B = '#00bfff'
+    DB = '#003fff'
+    DeB = '#3f00ff'
+    BV = '#bf00ff'
+    V = '#ff00bf'
+    RV = '#ff003f'
+    GREY = '#888888'
+
+
+def get_dict_for_pie_chart():
+  return {'values': [], 'labels': [], 'colors': []}
 
 def get_hue_from_RGB(rgb):
     hue = 0
@@ -146,6 +166,10 @@ def get_RGB_from_hue(hue):
 
     return [r, g, b]
 
+def get_color_code_from_rgb(rgb):
+    [r, g, b] = rgb
+    return '#%02x%02x%02x' % (r, g, b)
+
 def get_RGB_from_hue(hue):
     """
     get RGB params(ex. [255,255,255]) from hue degree.
@@ -178,3 +202,60 @@ def get_RGB_from_hue(hue):
     [r, g, b] = map(lambda n: n if 0 <= n <= 255 else 0, [r, g, b])
 
     return [r, g, b]
+
+def color_name_dict_to_chart_data(color_name_dict):
+    print(color_name_dict)
+    color_name_data = get_dict_for_pie_chart()
+
+    for key, value in color_name_dict.items():
+
+      color_name_data['labels'].append(key)
+      color_name_data['values'].append(len(value))
+
+      if len(value) > 0:
+        color_name_data['colors'].append(get_color_code_average(value))
+      else:
+         color_name_data['colors'].append(get_color_code_by_color_name(key))
+    
+    return color_name_data
+
+def get_color_code_by_color_name(name):
+    value = ''
+    for element in COLOR_NAMES:
+      if(name == element.value): value = COLOR_CODES[element.name].value
+
+    return value
+   
+
+def get_color_code_average(color_code_arr):
+  hex_arr = [code.replace('#', '') for code in color_code_arr]
+
+  hex_average = get_hex_average(hex_arr)
+  color_code = '#' + hex_average.replace('0x', '')
+  print(color_code)
+
+  return color_code
+
+def get_hex_average(hex_arr):
+  total_oct = 0
+  for _hex in hex_arr:
+      total_oct += int(_hex, 16)
+
+  average_oct = math.floor(total_oct / len(hex_arr))
+
+  return hex(average_oct)
+
+
+def get_base_color_code():
+    print(get_color_code_from_rgb(get_RGB_from_hue(15)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(45)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(75)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(105)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(135)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(165)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(195)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(225)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(255)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(285)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(315)))
+    print(get_color_code_from_rgb(get_RGB_from_hue(345)))

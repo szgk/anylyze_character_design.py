@@ -6,10 +6,12 @@ from utils import image
 from utils import color
 from utils import commindline
 
-def get_color_names():
-    [input_path, output_path] = commindline.get_args()
+def get_main_color_names():
+    [input_path, output_path, exe] = commindline.get_args()
 
-    image_paths = path.get_file_paths_in_dir(input_path, 'png')
+    image_paths = path.get_file_paths_in_dir(input_path, exe)
+
+    print(image_paths)
 
     color_name_dict = {}
 
@@ -32,4 +34,4 @@ def get_color_names():
         json.dump(color_name_dict, fp)
         
 
-get_color_names()
+get_main_color_names()

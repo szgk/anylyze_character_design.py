@@ -55,7 +55,7 @@ python ./src/get_main_color_codes.py input_directory_path output_json_path
 ### ge_main_color_names
 
 ```python
-python ./src/ge_main_color_names.py input_directory_path output_json_path
+python ./src/ge_main_color_names.py input_directory_path output_json_path exe
 ```
 
 ![](https://github.com/szgk/anylyze_image.py/blob/main/images/main_color_names.png)
