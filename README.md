@@ -60,10 +60,18 @@ python ./src/ge_main_color_names.py input_directory_path output_json_path exe
 
 ![](https://github.com/szgk/anylyze_image.py/blob/main/images/main_color_names.png)
 
-### create_main_colors_pie_chart
+### get_main_colors_pie_chart
 
 ```python
-python ./src/create_main_colors_pie_chart.py input_directory_path exe
+python ./src/get_main_colors_pie_chart.py input_directory_path output_file_path exe
 ```
 
 ![](https://github.com/szgk/anylyze_image.py/blob/main/images/main_colors_pie_chart.png)
+
+### get_color_rate_pi_chart
+
+```python
+python ./src/get_color_rate_pi_chart.py input_path output_path png
+```
+
+![](https://github.com/szgk/anylyze_image.py/blob/main/images/color_rate_pi_chart.png)

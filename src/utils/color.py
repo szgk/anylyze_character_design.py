@@ -69,11 +69,12 @@ def get_RGB_from_color_code(color_code):
 
 
 def get_color_name_from_RGB(rgb):
-    if(is_black_RGB(rgb, 0.3)):
-        return COLOR_NAMES.BLACK
-    if(is_white_RGB(rgb, 0.95)):
-        return COLOR_NAMES.WHITE
-    if(is_grey_RGB(rgb, 7)):
+
+    if(is_grey_RGB(rgb, 30)):
+        if(is_black_RGB(rgb, 0.3)):
+            return COLOR_NAMES.BLACK
+        if(is_white_RGB(rgb, 0.95)):
+            return COLOR_NAMES.WHITE
         return COLOR_NAMES.GREY
 
     hue = get_hue_from_RGB(rgb)
@@ -199,27 +200,6 @@ def get_color_code_from_rgb(rgb):
     [r, g, b] = rgb
     return '#%02x%02x%02x' % (r, g, b)
 
-def color_name_dict_to_chart_data(color_name_dict):
-    color_name_data = get_dict_for_pie_chart()
-
-    for key, value in color_name_dict.items():
-
-      color_name_data['labels'].append(key)
-      color_name_data['values'].append(len(value))
-      color_name_data['colors'].append(get_color_code_by_color_name(key))
-    
-    return color_name_data
-
-def main_color_dict_chart_data(color_name_dict):
-    color_name_data = get_dict_for_pie_chart()
-
-    for key, value in color_name_dict.items():
-      all_1_arr = [1 for i in range(len(value))]
-      color_name_data['values'].extend(all_1_arr)
-      color_name_data['colors'].extend(value)
-    
-    return color_name_data
-
 def get_color_code_by_color_name(name):
     value = '#000000'
 
@@ -243,7 +223,6 @@ def get_hex_average(hex_arr):
   average_oct = math.floor(total_oct / len(hex_arr))
 
   return hex(average_oct)
-
 
 def get_base_color_code():
     print(get_color_code_from_rgb(get_RGB_from_hue(0)))

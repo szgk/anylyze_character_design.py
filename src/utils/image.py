@@ -34,7 +34,7 @@ def get_cluster_centers_arr(cv2img, num = 5):
     cluster_centers_arr = cluster.cluster_centers_.astype(
         int, copy=False)
     
-    return cluster_centers_arr
+    return cluster_centers_arr # rgb arr
 
 def get_main_colors_from_cv2img(cv2img, num = 5):
     cluster_centers_arr = get_cluster_centers_arr(cv2img, num)
@@ -47,6 +47,10 @@ def get_main_colors_from_cv2img(cv2img, num = 5):
         image_arr.append(color_img)
 
     return image_arr
+
+def get_all_colors_from_cv2img(cv2img):
+
+    return
 
 def get_main_color_names_from_cv2img(cv2img, num = 5):
     cluster_centers_arr = get_cluster_centers_arr(cv2img, num)
@@ -70,6 +74,22 @@ def get_main_colors_by_image(image, num = 5):
     cv2_img = np.array(image.convert('RGB'))
     return get_main_colors_from_cv2img(cv2_img, num)
 
+def get_all_RGB_by_path(image_path):
+    cv2_img = cv2.imread(image_path)
+    rgb_arr = get_rgb_arr_from_cv2_img(cv2_img)
+    return rgb_arr
+
+def get_resize_image(cv2_img, rate=0.5):
+    cv2_resize_img = cv2.resize(cv2_img,None,fx=rate,fy=rate)
+    return cv2_resize_img
+
+def get_rgb_arr_from_cv2_img(cv2_img):
+    rgb_arr = np.array(cv2_img).reshape(-1, 3)
+    return rgb_arr
+
+def get_color_from_path(image_path, num=1000):
+    cv2_img = cv2.imread(image_path)
+    return get_cluster_centers_arr(cv2_img, num)
 
 def get_concat_image(images):
     image_width = 0
