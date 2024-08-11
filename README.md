@@ -63,7 +63,7 @@ python ./src/ge_main_color_names.py input_directory_path output_json_path exe
 ### create_main_colors_pie_chart
 
 ```python
-python ./src/create_main_colors_pie_chart.py output_directory_path exe
+python ./src/create_main_colors_pie_chart.py input_directory_path exe
 ```
 
 ![](https://github.com/szgk/anylyze_image.py/blob/main/images/main_colors_pie_chart.png)
