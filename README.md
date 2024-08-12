@@ -81,3 +81,11 @@ python ./src/get_color_rate_pi_chart.py input_directory_path output_directory_pa
 ```python
 python ./src/get_color_rgb.py input_directory_path output_directory_path exe
 ```
+
+### get_cropped_anime_face
+
+```python
+python ./src/get_cropped_anime_face.py input_directory_path output_directory_path exe
+```
+
+![](https://github.com/szgk/anylyze_image.py/blob/main/images/cropped_anime_face.png)
