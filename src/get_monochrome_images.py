@@ -11,14 +11,11 @@ from utils import image
 # こちらのコードを参考にさせて頂いています
 # https://github.com/marron-akanishi/AFD/blob/master/sample.py
 
-def get_anime_face_rect():
+def get_monochrome_images():
     [input_path, output_path, exe] = commindline.get_args()
 
     image_paths = path.get_file_paths_in_dir(input_path, exe)
     print(image_paths)
-
-    face_detector = dlib.simple_object_detector("./lib/detector_face.svm")
-    eye_detector = dlib.simple_object_detector("./lib/detector_eye.svm")
 
     for image_path in image_paths:
         print(image_path)
@@ -28,33 +25,8 @@ def get_anime_face_rect():
         p_file = Path(image_path)
         _output_path = output_path + p_file.stem + '.' + exe
     
-        faces = face_detector(img_gry)
-  
-        for rect in faces:
+        ret, img_thresh = cv2.threshold(img_gry, 0, 255, cv2.THRESH_OTSU)
 
-            x_start = rect.left()
-            x_end = rect.right()
-            y_start = rect.top()
-            y_end = rect.bottom()
+        cv2.imwrite(_output_path, img_thresh)
 
-            face_width = x_end - x_start
-            face_height = y_end - y_start
-
-            if abs(face_width - face_height) > 3:
-                continue
-
-            face = cv2_img[y_start:y_end, x_start:x_end]
-
-            eyes = eye_detector(face)
-            if len(eyes) > 0:
-                for eye in eyes:
-                    cv2.rectangle(cv2_img, (x_start+eye.left(), y_start+eye.top()),
-                                (x_start+eye.right(), y_start+eye.bottom()), (255, 0, 0), thickness=2)
-            else:
-                continue
-
-            cv2.rectangle(cv2_img, (x_start, y_start), (x_end, y_end), (0, 0, 255), thickness=2)
-
-        cv2.imwrite(_output_path, cv2_img)
-
-get_anime_face_rect()  
+get_monochrome_images()  

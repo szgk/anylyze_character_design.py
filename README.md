@@ -9,7 +9,7 @@ python -m venv ./analyze_image
 ```
 
 ```
-.\analyze_image\\Scripts\activate
+./analyze_image/Scripts/activate
 ```
 
 ## How to use
