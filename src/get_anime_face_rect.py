@@ -11,7 +11,7 @@ from utils import image
 # こちらのコードを参考にさせて頂いています
 # https://github.com/marron-akanishi/AFD/blob/master/sample.py
 
-def get_anime_face_rate_AFD():
+def get_anime_face_rect():
     [input_path, output_path, exe] = commindline.get_args()
 
     image_paths = path.get_file_paths_in_dir(input_path, exe)
@@ -57,4 +57,4 @@ def get_anime_face_rate_AFD():
 
         cv2.imwrite(_output_path, cv2_img)
 
-get_anime_face_rate_AFD()  
+get_anime_face_rect()  

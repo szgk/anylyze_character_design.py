@@ -107,4 +107,12 @@ python ./src/get_anime_face_rect.py input_directory_path output_directory_path e
 python ./src/get_anime_face_landmark.py input_directory_path output_directory_path exe
 ```
 
-![](https://github.com/szgk/anylyze_image.py/blob/main/images/anime_face_landmark..png)
+![](https://github.com/szgk/anylyze_image.py/blob/main/images/anime_face_landmark.png)
+
+### get_anime_face_ratio
+
+```python
+python ./src/get_anime_face_ratio.py input_directory_path output_file_path exe
+```
+
+![](https://github.com/szgk/anylyze_image.py/blob/main/images/anime_face_ratio.png)
