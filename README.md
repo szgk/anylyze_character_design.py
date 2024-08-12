@@ -90,7 +90,7 @@ python ./src/get_cropped_anime_face.py input_directory_path output_directory_pat
 
 ![](https://github.com/szgk/anylyze_image.py/blob/main/images/cropped_anime_face.png)
 
-### get_anime_face_rate
+### get_anime_face_rate_AFD
 
 refference this code. こちらのコードを参考にさせて頂いています
 https://github.com/marron-akanishi/AFD/blob/master/sample.py
