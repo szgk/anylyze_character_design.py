@@ -75,3 +75,9 @@ python ./src/get_color_rate_pi_chart.py input_directory_path output_directory_pa
 ```
 
 ![](https://github.com/szgk/anylyze_image.py/blob/main/images/color_rate_pi_chart.png)
+
+### get_color_rgb
+
+```python
+python ./src/get_color_rgb.py input_directory_path output_directory_path exe
+```
