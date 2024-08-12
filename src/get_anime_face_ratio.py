@@ -25,9 +25,6 @@ def get_anime_face_ratio():
 
         p_file = Path(image_path)
 
-        result[p_file.stem + '_0'] = {}
-
-    
         faces = face_detector(img_gry)
   
         for i, rect in enumerate(faces):
@@ -62,8 +59,6 @@ def get_anime_face_ratio():
             }
 
             result[p_file.stem + '_' + str(i)] = copy.deepcopy(face_rect_dict)
-
-            print(eye_count)
 
             # 目検出時
             if eye_count > 0:

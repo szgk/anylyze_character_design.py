@@ -112,7 +112,15 @@ python ./src/get_anime_face_landmark.py input_directory_path output_directory_pa
 ### get_anime_face_ratio
 
 ```python
-python ./src/get_anime_face_ratio.py input_directory_path output_file_path exe
+python ./src/get_anime_face_ratio.py input_directory_path output_json_path exe
 ```
 
 ![](https://github.com/szgk/anylyze_image.py/blob/main/images/anime_face_ratio.png)
+
+### analyze_face_ratio_dict
+
+```python
+python ./src/analyze_face_ratio_dict.py input_json_path output_json_path
+```
+
+![](https://github.com/szgk/anylyze_image.py/blob/main/images/analyze_face_ratio_dict.png)
