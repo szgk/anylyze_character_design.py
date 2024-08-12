@@ -1,5 +1,6 @@
-from utils import path
+import json
 
+from utils import path
 from utils import image
 from utils import color
 
@@ -57,3 +58,7 @@ def get_color_chart_data(color_name_dict):
       color_name_data['colors'].extend(value)
     
     return color_name_data
+
+def save_json(output_path, json_data):
+    with open(output_path, 'w') as fp:
+        json.dump(json_data, fp)

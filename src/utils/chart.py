@@ -21,12 +21,12 @@ def get_double_pie_chart(data1, data2, output_path):
         counterclock=False,
         startangle=90,
         radius=0.7,
-        labeldistance=0.7,
+        # labeldistance=0.7,
         colors=data1['colors'],
         # wedgeprops={'linewidth': 2,'edgecolor':"white"},
-        textprops={'color': "black", 'fontsize':8},
+        # textprops={'color': "black", 'fontsize':8},
         pctdistance=0.5,
-        autopct="%.1f%%",
+        # autopct="%.1f%%",
     )
     plt.axis('equal')
 
