@@ -14,6 +14,7 @@ def get_main_color_name_dict_by_path(input_path, exe):
         color_name_dict[str(element.value)] = []
 
     for image_path in image_paths:
+        print(image_path)
         main_color_codes = image.get_main_color_names_by_path(image_path)
 
         for color_code in main_color_codes:

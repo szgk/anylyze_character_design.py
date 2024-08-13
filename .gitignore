@@ -1,8 +1,6 @@
 .history
 analyze_image
-output/*
-input/*
+data_copylight_input
+data_copylight_output
 !output/images/sample.jpg
-main_colors
-!output/main_colors/sample.jpg
 src/utils/__pycache__/

@@ -20,7 +20,7 @@ def get_cluster_centers_arr(cv2img, num = 5):
 
     cv2_img = cv2_img.reshape(
         (cv2_img.shape[0] * cv2_img.shape[1], 3))
-
+    print('start KMeans')
     cluster = KMeans(n_clusters=num)
 
     cluster.fit(X=cv2_img)
