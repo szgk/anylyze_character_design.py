@@ -25,6 +25,10 @@ python -m venv ./analyze_image
 ./analyze_image/Scripts/activate
 ```
 
+## data
+
+https://docs.google.com/spreadsheets/d/11egC88d7PB18CPwUlaHlPIH6pgVHsR_qLlzRESh15UI/edit?gid=0#gid=0
+
 ## How to use
 
 ### Get main colors
