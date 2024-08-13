@@ -1,6 +1,6 @@
-import re
 import json
 from utils import commindline
+from datetime import datetime as dt
 
 # get data from src\merge_avatar_data_and_face_raito_data.py
 
@@ -65,6 +65,21 @@ def get_avatar_info_for_chart_by_json():
     }
     attribute_data_for_pie_chart['values'] = [0] * len(attribute_data_for_pie_chart['labels'])
 
+    sale_date_dict = {
+        'year': {},
+        'month': {},
+    }
+    sale_year_data_for_pie_chart = {
+        'labels': [],
+        'values': []
+    }
+    sale_month_data_for_pie_chart = {
+        'labels': [],
+        'values': []
+    }
+
+    ##############################################
+
     for value in avatar_data.values():
         cat = value['category']
         # 少女
@@ -79,6 +94,8 @@ def get_avatar_info_for_chart_by_json():
         # ちびキャラ
         elif cat == 'ちびキャラ':
             category_data_for_pie_chart['values'][3] += 1
+
+        ##############################################
 
         # けもみみ+しっぽ+角
         if len(value['kemomimi']) > 0 and len(value['tail']) > 0 and len(value['horn']) > 0:
@@ -114,7 +131,34 @@ def get_avatar_info_for_chart_by_json():
         else:
             attribute_data_for_pie_chart['values'][attribute_data_for_pie_chart['labels'].index('なし')] += 1
 
+        ##############################################
+
+        sale_date = value['about_sale_date']
+
+        sale_year = dt.strptime(sale_date, '%Y/%m/%d').year
+        sale_month = dt.strptime(sale_date, '%Y/%m/%d').month
+
+        if(sale_year in sale_date_dict['year']):
+            sale_date_dict['year'][sale_year] += 1
+        else:
+            sale_date_dict['year'][sale_year] = 1
+
+        if(sale_month in sale_date_dict['month']):
+            sale_date_dict['month'][sale_month] += 1
+        else:
+            sale_date_dict['month'][sale_month] = 1
+
             
+
+    sorted_year_dict = sorted(sale_date_dict['year'].items(), key=lambda x:x[0])
+    for key, value in sorted_year_dict:
+        sale_year_data_for_pie_chart['labels'].append(key)
+        sale_year_data_for_pie_chart['values'].append(value)
+    
+    sorted_month_dict = sorted(sale_date_dict['month'].items(), key=lambda x:x[0])
+    for key, value in sorted_month_dict:
+        sale_month_data_for_pie_chart['labels'].append(key)
+        sale_month_data_for_pie_chart['values'].append(value)
 
     print(category_data_for_pie_chart)
     with open(output_path+'category_data_for_pie_chart.json', 'w', encoding="utf-8") as f:
@@ -125,5 +169,15 @@ def get_avatar_info_for_chart_by_json():
     with open(output_path+'attribute_data_for_pie_chart.json', 'w', encoding="utf-8") as f:
         print('save json')
         json.dump(attribute_data_for_pie_chart, f, ensure_ascii=False)
+
+    print(sale_year_data_for_pie_chart)
+    with open(output_path+'sale_year_data_for_pie_chart.json', 'w', encoding="utf-8") as f:
+        print('save json')
+        json.dump(sale_year_data_for_pie_chart, f, ensure_ascii=False)
+
+    print(sale_month_data_for_pie_chart)
+    with open(output_path+'sale_month_data_for_pie_chart.json', 'w', encoding="utf-8") as f:
+        print('save json')
+        json.dump(sale_month_data_for_pie_chart, f, ensure_ascii=False)
 
 get_avatar_info_for_chart_by_json()
