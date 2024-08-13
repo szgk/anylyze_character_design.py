@@ -2,7 +2,8 @@ import re
 import json
 from utils import commindline
 
-# face_ratio_data
+# src\get_anime_face_ratio.py
+#  face_ratio_data
 # {
 #   "adolescentu_0": {
 #     "face_width": 90,
@@ -16,7 +17,8 @@ from utils import commindline
 #     "eye_to_forehead": 0
 # }
 
-# avatar_data
+#  https://docs.google.com/spreadsheets/d/11egC88d7PB18CPwUlaHlPIH6pgVHsR_qLlzRESh15UI/edit?gid=0#gid=0
+#  avatar_data
 # [
 #     {
 #         "about_sale_date": "2022/02/26",
@@ -39,7 +41,7 @@ from utils import commindline
 #     },
 # ]
 
-def csv_to_json():
+def merge_avatar_data_and_face_raito_data():
     [face_ratio_data, avatar_data, output_path] = commindline.get_args()
     ratio_dict = json.load(open(face_ratio_data))
     avatar_data = json.load(open(avatar_data, encoding="utf-8"))
@@ -66,4 +68,4 @@ def csv_to_json():
         print('save json')
         json.dump(result, f, ensure_ascii=False)
 
-csv_to_json()
+merge_avatar_data_and_face_raito_data()

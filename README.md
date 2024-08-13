@@ -15,7 +15,7 @@ program for analyze character design.
 
 参考: https://www.vn3.org/terms#h.cselzcl2g6w
 
-## initialize
+## Initialize
 
 ```
 python -m venv ./analyze_image
@@ -25,7 +25,7 @@ python -m venv ./analyze_image
 ./analyze_image/Scripts/activate
 ```
 
-## data
+## Data
 
 https://docs.google.com/spreadsheets/d/11egC88d7PB18CPwUlaHlPIH6pgVHsR_qLlzRESh15UI/edit?gid=0#gid=0
 

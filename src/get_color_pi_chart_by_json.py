@@ -15,12 +15,12 @@ def get_color_pi_chart_by_json():
     data_dict = {}
 
     for data1_path in data1_paths:
-        data1 = json.load(open(data1_path, 'r'))
+        data1 = json.load(open(data1_path, 'r', encoding="utf-8"))
         p_file = Path(data1_path)
         data_dict[p_file.stem] = {'data1': data1}
 
     for data2_path in data2_paths:
-        data2 = json.load(open(data2_path, 'r'))
+        data2 = json.load(open(data2_path, 'r', encoding="utf-8"))
         p_file = Path(data2_path)
         
         if(p_file.stem in data_dict and 'data1' in data_dict[p_file.stem]):

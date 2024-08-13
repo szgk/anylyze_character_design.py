@@ -1,5 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
+# import matplotlib.font_manager
+# print([f.name for f in matplotlib.font_manager.fontManager.ttflist])
+
+plt.rcParams['font.family'] = 'Yu Gothic'
 
 # data: { values[], labels: [], colors: [] }
 def get_double_pie_chart(data1, data2, output_path):
@@ -39,6 +43,7 @@ def get_double_pie_chart(data1, data2, output_path):
 
 # data: { values[], labels: [], colors: [] }
 def get_pie_chart(data1, output_path):
+    plt.clf()
 
     # inner pie chart
     plt.pie(
@@ -47,13 +52,15 @@ def get_pie_chart(data1, output_path):
         counterclock=False,
         startangle=90,
         radius=0.7,
-        labeldistance=0.7,
-        colors=data1['colors'],
+        labeldistance=1.3,
+        colors= data1['colors'] if 'colors' in data1 else None,
         wedgeprops={'linewidth': 2,'edgecolor':"white"},
-        textprops={'color': "black"},
-        pctdistance=0.6,
-        autopct="%.1f%%",
+        textprops={'color': "black", 'fontsize':8},
+        pctdistance=0.8,
+        autopct=lambda p: '{:.1f}%'.format(p) if p >= 2.5 else '',
     )
+
+
     plt.axis('equal')
 
     plt.savefig(output_path)
