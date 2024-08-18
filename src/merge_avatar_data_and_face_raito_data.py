@@ -30,7 +30,7 @@ from utils import commindline
 #         "category": "少女",
 #         "about_polygon": "108686",
 #         "body": "中",
-#         "bust": "大",
+#         "chest": "大",
 #         "kemomimi": "",
 #         "tail": "",
 #         "horn": "",
