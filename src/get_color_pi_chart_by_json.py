@@ -30,7 +30,7 @@ def get_color_pi_chart_by_json():
 
     for key, data in data_dict.items():
         print(key)
-        _output_path = output_path+key+'.png'
+        _output_path = output_path+'/'+key+'.png'
         chart.get_double_pie_chart(data['data1'], data['data2'], _output_path)
 
 get_color_pi_chart_by_json()

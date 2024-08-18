@@ -41,6 +41,41 @@ def get_double_pie_chart(data1, data2, output_path):
 
     plt.savefig(output_path)
 
+def get_double_pie_chart_width_label(data1, data2, output_path):
+
+    # outer pie chart
+    plt.pie(
+        data2['values'],
+        counterclock=False,
+        startangle=90,
+        radius=1,
+        colors=data2['colors'],
+    )
+    plt.axis('equal')
+
+    # inner pie chart
+    plt.pie(
+        data1['values'],
+        labels=data1['labels'],
+        counterclock=False,
+        startangle=90,
+        radius=0.7,
+        labeldistance=0.7,
+        colors=data1['colors'],
+        wedgeprops={'linewidth': 2,'edgecolor':"white"},
+        textprops={'color': "black", 'fontsize':8},
+        pctdistance=0.5,
+        autopct="%.1f%%",
+    )
+    plt.axis('equal')
+
+    # center white circle
+    center_circle = plt.Circle((0,0),0.4,color='white', fc='white',linewidth=1.25) #中心(0,0)に40%の大きさで円を描画
+    fig = plt.gcf()
+    fig.gca().add_artist(center_circle)
+
+    plt.savefig(output_path)
+
 # data: { values[], labels: [], colors: [] }
 def get_pie_chart(data1, output_path):
     plt.clf()
@@ -64,3 +99,12 @@ def get_pie_chart(data1, output_path):
     plt.axis('equal')
 
     plt.savefig(output_path)
+
+def get_bar_graph(output_path, labels, values):
+    plt.clf()
+    plt.figure(figsize=(15, 6), dpi=150)
+    plt.bar(np.array(labels), np.array(values), width=0.8)
+    plt.xticks(rotation=90, fontsize=7)
+    plt.tight_layout()
+    
+    plt.savefig(output_path,  bbox_inches='tight')

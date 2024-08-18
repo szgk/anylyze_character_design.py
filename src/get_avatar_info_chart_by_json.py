@@ -9,7 +9,7 @@ from utils import chart
 def get_avatar_info_chart_by_json():
     [output_path] = commindline.get_args()
 
-    attribute_data = json.load(open('./data_text/avatar_data_for_chart/attribute_data_for_pie_chart.json', 'r', encoding="utf-8"))
+    attribute_data = json.load(open('./data_text/tukurunomori_avatar_color_pi_chart_data/attribute_data_for_pie_chart.json', 'r', encoding="utf-8"))
     category_data = json.load(open('./data_text/avatar_data_for_chart/category_data_for_pie_chart.json', 'r', encoding="utf-8"))
     sale_month_data = json.load(open('./data_text/avatar_data_for_chart/sale_month_data_for_pie_chart.json', 'r', encoding="utf-8"))
     sale_year_data = json.load(open('./data_text/avatar_data_for_chart/sale_year_data_for_pie_chart.json', 'r', encoding="utf-8"))
