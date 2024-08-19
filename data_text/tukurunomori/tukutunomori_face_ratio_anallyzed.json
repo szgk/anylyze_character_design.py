@@ -1,0 +1,48 @@
+{
+    "eye_big": {
+        "name": "perle_0",
+        "num": 1800
+    },
+    "eye_small": {
+        "name": "yoiyami_nekoru_0",
+        "num": 252
+    },
+    "eye_distance_wide": {
+        "name": "misakiraine_0",
+        "num": 27
+    },
+    "eye_distance_narrow": {
+        "name": "wolflotte_0",
+        "num": 18
+    },
+    "eye_to_side_wide": {
+        "name": "misakiraine_0",
+        "num": 68
+    },
+    "eye_to_side_short": {
+        "name": "mellcul_0",
+        "num": 4
+    },
+    "forehead_long": {
+        "name": "tycho_0",
+        "num": 43
+    },
+    "forehead_short": {
+        "name": "perle_0",
+        "num": 11
+    },
+    "face_bottom_long": {
+        "name": "nekoyamanae_0",
+        "num": 71
+    },
+    "face_bottom_short": {
+        "name": "yoiyami_nekoru_0",
+        "num": 43
+    },
+    "eye_height_average": 0.24722222222222223,
+    "eye_width_average": 0.3106111111111111,
+    "eye_to_eye_average": -0.3358333333333333,
+    "forehead_average": 0.2826111111111111,
+    "face_bottom_average": 0.5347777777777778,
+    "eye_to_side_average": 0.22972222222222222
+}

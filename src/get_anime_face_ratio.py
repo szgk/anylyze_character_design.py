@@ -92,6 +92,8 @@ def get_anime_face_ratio():
 
         print(face_rect_dict)
 
+    print(result)
+
     with open(output_path, 'w') as fp:
         json.dump(result, fp)
 

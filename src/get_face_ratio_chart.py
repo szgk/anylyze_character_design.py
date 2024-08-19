@@ -7,7 +7,7 @@ from utils import commindline
 from utils import sort
 from utils import chart
 
-def get_PCA_data_by_face_ratio():
+def get_face_ratio_chart():
     [input_path, output_path] = commindline.get_args()
     face_ratio_dict = json.load(open(input_path, 'r'))
 
@@ -42,15 +42,15 @@ def get_PCA_data_by_face_ratio():
     sorted_eye_to_forehead_dict = sort.dict_by_value(eye_to_forehead_dict)
     sorted_eye_to_eye_dict= sort.dict_by_value(eye_to_eye_dict)
 
-    chart.get_bar_graph(output_path + '/sorted_face_width_dict.png', list(sorted_face_width_dict.keys()), list(sorted_face_width_dict.values()))
-    chart.get_bar_graph(output_path + '/sorted_face_height_dict.png', list(sorted_face_height_dict.keys()), list(sorted_face_height_dict.values()))
-    chart.get_bar_graph(output_path + '/sorted_eye_height_dict.png', list(sorted_eye_height_dict.keys()), list(sorted_eye_height_dict.values()))
-    chart.get_bar_graph(output_path + '/sorted_eye_height_dict.png', list(sorted_eye_height_dict.keys()), list(sorted_eye_height_dict.values()))
-    chart.get_bar_graph(output_path + '/sorted_eye_width_dict.png', list(sorted_eye_width_dict.keys()), list(sorted_eye_width_dict.values()))
-    chart.get_bar_graph(output_path + '/sorted_eye_to_side_dict.png', list(sorted_eye_to_side_dict.keys()), list(sorted_eye_to_side_dict.values()))
-    chart.get_bar_graph(output_path + '/sorted_eye_to_jaw_dict.png', list(sorted_eye_to_jaw_dict.keys()), list(sorted_eye_to_jaw_dict.values()))
-    chart.get_bar_graph(output_path + '/sorted_eye_to_forehead_dict.png', list(sorted_eye_to_forehead_dict.keys()), list(sorted_eye_to_forehead_dict.values()))
-    chart.get_bar_graph(output_path + '/sorted_eye_to_eye_dict.png', list(sorted_eye_to_eye_dict.keys()), list(sorted_eye_to_eye_dict.values()))
+    chart.get_bar_graph(output_path + 'sorted_face_width_dict.png', list(sorted_face_width_dict.keys()), list(sorted_face_width_dict.values()))
+    chart.get_bar_graph(output_path + 'sorted_face_height_dict.png', list(sorted_face_height_dict.keys()), list(sorted_face_height_dict.values()))
+    chart.get_bar_graph(output_path + 'sorted_eye_height_dict.png', list(sorted_eye_height_dict.keys()), list(sorted_eye_height_dict.values()))
+    chart.get_bar_graph(output_path + 'sorted_eye_height_dict.png', list(sorted_eye_height_dict.keys()), list(sorted_eye_height_dict.values()))
+    chart.get_bar_graph(output_path + 'sorted_eye_width_dict.png', list(sorted_eye_width_dict.keys()), list(sorted_eye_width_dict.values()))
+    chart.get_bar_graph(output_path + 'sorted_eye_to_side_dict.png', list(sorted_eye_to_side_dict.keys()), list(sorted_eye_to_side_dict.values()))
+    chart.get_bar_graph(output_path + 'sorted_eye_to_jaw_dict.png', list(sorted_eye_to_jaw_dict.keys()), list(sorted_eye_to_jaw_dict.values()))
+    chart.get_bar_graph(output_path + 'sorted_eye_to_forehead_dict.png', list(sorted_eye_to_forehead_dict.keys()), list(sorted_eye_to_forehead_dict.values()))
+    chart.get_bar_graph(output_path + 'sorted_eye_to_eye_dict.png', list(sorted_eye_to_eye_dict.keys()), list(sorted_eye_to_eye_dict.values()))
 
 
-get_PCA_data_by_face_ratio()
+get_face_ratio_chart()

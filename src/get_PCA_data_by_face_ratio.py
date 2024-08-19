@@ -13,10 +13,11 @@ from utils import commindline
 
 def get_PCA_data_by_face_ratio():
     [input_path, output_path] = commindline.get_args()
-    _face_ratio_dict = json.load(open(input_path, 'r'))
+    _face_ratio_dict = json.load(open(input_path, 'r', encoding="utf-8"))
     face_ratio_dict = copy.deepcopy(_face_ratio_dict)
 
     for key, value in _face_ratio_dict.items():
+        print(face_ratio_dict[key])
         face_ratio_dict[key]['face_height'] = math.ceil(value['face_height']/value['face_width']*100)/100
         face_ratio_dict[key]['face_width'] = math.ceil(value['face_width']/value['face_height']*100)/100
 
