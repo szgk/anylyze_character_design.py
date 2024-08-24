@@ -15,6 +15,10 @@ program for analyze character design.
 
 参考: https://www.vn3.org/terms#h.cselzcl2g6w
 
+## 分析結果
+
+https://github.com/szgk/3D_Avatar_Analysis/tree/main/docs
+
 ## Initialize
 
 ```
