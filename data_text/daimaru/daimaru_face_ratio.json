@@ -1,0 +1,123 @@
+{
+    "ageha_0": {
+        "face_width": 36,
+        "face_height": 36,
+        "eye_count": 0,
+        "eye_height": 0,
+        "eye_width": 0,
+        "eye_to_eye": 0,
+        "eye_to_side": 0,
+        "eye_to_jaw": 0,
+        "eye_to_forehead": 0
+    },
+    "ayuka_0": {
+        "face_width": 74,
+        "face_height": 75,
+        "eye_count": 2,
+        "eye_height": 0.26666666666666666,
+        "eye_width": 0.32432432432432434,
+        "eye_to_eye": -0.8243243243243243,
+        "eye_to_side": 0.16216216216216217,
+        "eye_to_jaw": 0.5333333333333333,
+        "eye_to_forehead": 0.32
+    },
+    "cocohime_0": {
+        "face_width": 75,
+        "face_height": 74,
+        "eye_count": 0,
+        "eye_height": 0,
+        "eye_width": 0,
+        "eye_to_eye": 0,
+        "eye_to_side": 0,
+        "eye_to_jaw": 0,
+        "eye_to_forehead": 0
+    },
+    "furi_0": {
+        "face_width": 74,
+        "face_height": 75,
+        "eye_count": 1,
+        "eye_height": 0.25333333333333335,
+        "eye_width": 0.3108108108108108,
+        "eye_to_eye": 0,
+        "eye_to_side": 0.06756756756756757,
+        "eye_to_jaw": 0.7733333333333333,
+        "eye_to_forehead": 0.52
+    },
+    "hishiro_0": {
+        "face_width": 89,
+        "face_height": 90,
+        "eye_count": 2,
+        "eye_height": 0.2111111111111111,
+        "eye_width": 0.2696629213483146,
+        "eye_to_eye": 0.21348314606741572,
+        "eye_to_side": 0.6404494382022472,
+        "eye_to_jaw": 0.45555555555555555,
+        "eye_to_forehead": 0.24444444444444444
+    },
+    "kuon_0": {
+        "face_width": 90,
+        "face_height": 90,
+        "eye_count": 1,
+        "eye_height": 0.3111111111111111,
+        "eye_width": 0.3888888888888889,
+        "eye_to_eye": 0,
+        "eye_to_side": 0.07777777777777778,
+        "eye_to_jaw": 0.6333333333333333,
+        "eye_to_forehead": 0.32222222222222224
+    },
+    "mio_0": {
+        "face_width": 90,
+        "face_height": 90,
+        "eye_count": 2,
+        "eye_height": 0.25555555555555554,
+        "eye_width": 0.3111111111111111,
+        "eye_to_eye": 0.2111111111111111,
+        "eye_to_side": 0.6777777777777778,
+        "eye_to_jaw": 0.4888888888888889,
+        "eye_to_forehead": 0.2111111111111111
+    },
+    "rein_0": {
+        "face_width": 75,
+        "face_height": 75,
+        "eye_count": 0,
+        "eye_height": 0,
+        "eye_width": 0,
+        "eye_to_eye": 0,
+        "eye_to_side": 0,
+        "eye_to_jaw": 0,
+        "eye_to_forehead": 0
+    },
+    "reira_0": {
+        "face_width": 74,
+        "face_height": 75,
+        "eye_count": 1,
+        "eye_height": 0.36,
+        "eye_width": 0.47297297297297297,
+        "eye_to_eye": 0,
+        "eye_to_side": 0.6621621621621622,
+        "eye_to_jaw": 0.6133333333333333,
+        "eye_to_forehead": 0.25333333333333335
+    },
+    "ryusei_0": {
+        "face_width": 75,
+        "face_height": 75,
+        "eye_count": 1,
+        "eye_height": 0.30666666666666664,
+        "eye_width": 0.37333333333333335,
+        "eye_to_eye": 0,
+        "eye_to_side": 0.16,
+        "eye_to_jaw": 0.6666666666666666,
+        "eye_to_forehead": 0.36
+    },
+    "sachika_0": {
+        "face_width": 89,
+        "face_height": 90,
+        "eye_count": 2,
+        "eye_height": 0.2111111111111111,
+        "eye_width": 0.2696629213483146,
+        "eye_to_eye": 0.16853932584269662,
+        "eye_to_side": 0.5955056179775281,
+        "eye_to_jaw": 0.5333333333333333,
+        "eye_to_forehead": 0.32222222222222224
+    }
+}

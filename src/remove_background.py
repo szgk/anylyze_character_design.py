@@ -21,6 +21,6 @@ def remove_background():
         )
 
         p_file = Path(image_path)
-        cv2.imwrite(output_path+p_file.name, remove_background_image)
+        cv2.imwrite(output_path+p_file.stem + '.png', remove_background_image)
 
 remove_background()
